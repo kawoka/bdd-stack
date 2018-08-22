@@ -8,9 +8,8 @@ RSpec.describe Stack do
   describe "push" do
     subject { stack.push 1 }
     it { expect(subject).to eq stack }
-    it '数がpushした回数と一致' do
-      subject
-      expect(stack.length).to eq 1
+    it '数が増えている' do
+      expect { subject }.to change { stack.length }.to 1
     end
   end
 
@@ -19,7 +18,7 @@ RSpec.describe Stack do
     subject { stack.pop }
     context "空の stack" do
       it { expect(subject).to eq nil}
-      it '数は0' do
+      it 'lengthは0' do
         subject
         expect(stack.length).to eq 0
       end
@@ -28,9 +27,8 @@ RSpec.describe Stack do
     context "1 を push 済みの stack" do
       before { stack.push 1 }
       it { expect(subject).to eq 1 }
-      it '数が減っている' do
-        subject
-        expect(stack.length).to eq 0
+      it 'lengthが減っている' do
+        expect { subject }.to change { stack.length }.to 0
       end
     end
 
@@ -40,9 +38,8 @@ RSpec.describe Stack do
         stack.push 5
       end
       it { expect(subject).to eq 5 }
-      it '数が減っている' do
-        subject
-        expect(stack.length).to eq 1
+      it 'lengthが減っている' do
+        expect { subject }.to change { stack.length }.to 1
       end
     end
   end
