@@ -8,6 +8,10 @@ RSpec.describe Stack do
   describe "push" do
     subject { stack.push 1 }
     it { expect(subject).to eq stack }
+    it '数がpushした回数と一致' do
+      subject
+      expect(stack.length).to eq 1
+    end
   end
 
   # 2.pop 出来る?
